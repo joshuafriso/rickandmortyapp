@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rickandmortyapp/widgets/details_row.dart';
 
 class DetailsPage extends StatelessWidget {
   final Map details;
@@ -20,7 +21,8 @@ class DetailsPage extends StatelessWidget {
         padding: EdgeInsets.all(30.0),
         child: Center(
           child: Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.black12),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Colors.black12),
             child: Column(
               children: <Widget>[
                 Container(
@@ -31,52 +33,18 @@ class DetailsPage extends StatelessWidget {
                             topRight: Radius.circular(10)),
                         child: Image.network(details["image"]))),
                 Flexible(
-                                  child: Text(
+                  child: Text(
                     details["name"],
                     style: TextStyle(fontSize: 24.0),
                   ),
                 ),
-                SizedBox(height: 30,),
-                Container(
-                  margin: EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text("Status".toUpperCase()),
-                      Flexible(child: Text(details["status"], style: TextStyle(color: Colors.orange, fontSize: 16.0),)),
-                    ],
-                  ),
+                SizedBox(
+                  height: 30,
                 ),
-                Container(
-                  margin: EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text("Species".toUpperCase()),
-                      Flexible(child: Text(details["species"], style: TextStyle(color: Colors.orange, fontSize: 16.0),)),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text("Gender".toUpperCase()),
-                      Flexible(child: Text(details["gender"], style: TextStyle(color: Colors.orange, fontSize: 16.0),)),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text("Origin".toUpperCase()),
-                      Flexible(child: Text(details["origin"]["name"], style: TextStyle(color: Colors.orange, fontSize: 16.0),)),
-                    ],
-                  ),
-                )
+                DetailsRow("Status", details["status"]),
+                DetailsRow("Species", details["species"]),
+                DetailsRow("Gender", details["gender"]),
+                DetailsRow("Origin", details["origin"]["name"]),
               ],
             ),
           ),
