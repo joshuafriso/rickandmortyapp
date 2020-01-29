@@ -9,15 +9,23 @@ class DetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10.0),
+      // padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.all(8),
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+      decoration: BoxDecoration(
+        // color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.white)
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(type.toUpperCase()),
+          Flexible(child: Text(type.toUpperCase())),
           Flexible(
               child: Text(
             desc,
-            style: TextStyle(color: Colors.orange, fontSize: 16.0),
+            style: TextStyle(color: Color(0xffFF9800), fontSize: 16.0),
+            textAlign: TextAlign.end,
           )),
         ],
       ),

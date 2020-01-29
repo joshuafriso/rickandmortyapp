@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rickandmortyapp/widgets/details_image.dart';
 import 'package:rickandmortyapp/widgets/details_row.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -21,26 +22,12 @@ class DetailsPage extends StatelessWidget {
         padding: EdgeInsets.all(30.0),
         child: Center(
           child: Container(
+            width: 300,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.black12),
+                borderRadius: BorderRadius.circular(10), color: Colors.black26),
             child: Column(
               children: <Widget>[
-                Container(
-                    margin: EdgeInsets.only(bottom: 10.0),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10)),
-                        child: Image.network(details["image"]))),
-                Flexible(
-                  child: Text(
-                    details["name"],
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
+                DetailsImage(details["image"], details["name"]),
                 DetailsRow("Status", details["status"]),
                 DetailsRow("Species", details["species"]),
                 DetailsRow("Gender", details["gender"]),

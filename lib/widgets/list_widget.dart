@@ -3,7 +3,6 @@ import 'package:rickandmortyapp/pages/details_page.dart';
 import 'package:rickandmortyapp/widgets/progress_widget.dart';
 
 class ListWidget extends StatelessWidget {
-
   final ScrollController _scrollController;
   final List characteres;
   final bool isLoading;
@@ -18,21 +17,21 @@ class ListWidget extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         if (index == characteres.length) {
           return ProgressWidget(isLoading);
-        }else
+        } else
           return GestureDetector(
-                      child: ListTile(
+            child: ListTile(
               title: Text(characteres[index]["name"]),
-              subtitle:
-                  Text('Status: ${characteres[index]["status"]}'),
+              subtitle: Text('Status: ${characteres[index]["status"]}'),
               leading: Image.network(characteres[index]["image"]),
             ),
-            onTap: (){
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DetailsPage(characteres[index]))
-                );
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DetailsPage(characteres[index])));
             },
           );
       },
-    );;
+    );
   }
 }
