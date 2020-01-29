@@ -9,11 +9,9 @@ class DetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: EdgeInsets.symmetric(horizontal: 10),
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       decoration: BoxDecoration(
-        // color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.white)
       ),
