@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  
   @override
   void initState() {
     _getData();
@@ -50,7 +49,6 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
