@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
+import 'package:rickandmortyapp/services/api_service.dart';
 import 'package:rickandmortyapp/widgets/list_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,13 +9,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ScrollController _scrollController = ScrollController();
-  String nextPage = "http://rickandmortyapi.com/api/character/?page=1";
 
   bool isLoading = false;
 
   List characteres = List();
 
-  final dio = Dio();
+  ApiService api = ApiService();
 
   void _getData() async {
     if(!isLoading){
@@ -24,12 +23,10 @@ class _HomePageState extends State<HomePage> {
       });
     }
 
-    final response = await dio.get(nextPage);
     List temp = List();
-    nextPage = response.data["info"]["next"];
-    for(int i = 0; i < response.data["results"].length; i++){
-      temp.add(response.data["results"][i]);
-    }
+
+    temp = await api.getData();
+    
     setState(() {
       isLoading = false;
       characteres.addAll(temp);
